@@ -7,5 +7,4 @@ Developers can then open the file within Burp and replicate the issues. When vul
 provides confirmation that the attack vector used in the pen test is now blocked. A retest is still recommended, in
 case alternative attack vectors remain exploitable.
 
-For further details, look in BappManifest.html.
-
+For further details, look in BappDescription.html 
