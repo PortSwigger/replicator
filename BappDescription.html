@@ -1,0 +1,51 @@
+<p>Replicator helps developers to reproduce issues discovered by pen testers. The pen tester produces a Replicator file
+    which contains the findings in the report. Each finding includes a request, associated session rules or macros, and
+    logic to detect presence of the vulnerability. The tester sends the Replicator file to the client alongside the report.
+    Developers can then open the file within Burp and replicate the issues. When vulnerabilities have been fixed, Replicator
+    provides confirmation that the attack vector used in the pen test is now blocked. A retest is still recommended, in
+    case alternative attack vectors remain exploitable.</p>
+
+<p><b>Developer workflow</b></p>
+
+<ol>
+    <li>Load the Replicator file.</li>
+    <li>If you want to test a different application instance (perhaps a development instance) edit the Hosts section to point to the instance.</li>
+    <li>Click <i>Test all</i>. All the vulnerabilities should get status Vulnerable. If any do not, you need to investigate why. You can use the Start Trace button to generate a trace file that may help the pen tester diagnose the issue.</li>
+    <li>Save the file. This is important for confirming fixes later.</li>
+    <li>Identify an issue to work on. Consult the pen test report for a full description.</li>
+    <li>When the application has been updated, click <i>Test</i> to see if it's still vulnerable.</li>
+</ol>
+
+<p>Issues can have the following status:</p>
+
+<ul>
+    <li><b>Vulnerable</b> - The application is still vulnerable.</li>
+    <li><b>Resolved (tentative)</b> - The vulnerability appears to be resolved. Replicator cannot confirm this with certainty; a retest is required for that.</li>
+    <li><b>Unable to replicate</b> - It wasn't possible to determine if the application is vulnerable. This may be because credentials are invalid. Some fixes (e.g. removing the whole page) can cause this.</li>
+</ul>
+
+
+<p><b>Tester workflow</b></p>
+
+<ol>
+    <li>Put Replicator in Tester mode using the menu.</li>
+    <li>It is recommended to add issues to Replicator when they are discovered. This will assist with report writing.
+        <ol>
+            <li>Issues detected by Scanner can be sent to Replicator, using the context menu.</li>
+            <li>Other issues can be sent from the relevant tool to Replicator. You need to complete the issue details, including grep expression.</li>
+            <li>If any issues require a login session, you must create a login macro, and select this in Replicator.</li>
+            <li>If an issue is more complex than a single request/response, use macros and session handling rules. Replicator will automatically detect rules and macros that apply to a request and include them in the Replicator file.</li>
+        </ol>
+    </li>
+    <li>When the report is complete, verify the Replicator file, to ensure it will work in a fresh environment where current tokens are no longer valid:
+        <ol>
+            <li>Select all issues, and click <i>Scrub cookies...</i> Remove any session cookies from the requests.</li>
+            <li>Click <i>Empty cookie jar</i></li>
+            <li>Select all the issues and click <i>Clear status</i></li>
+            <li>Click <i>Test all</i> and verify that all issues report as vulnerable.</li>
+        </ol>
+    </li>
+    <li>If some particular Burp configuration is needed, use the <i>Config...</i> button to include this in the Replicator file. On the Configuration dialog you may want to use the <i>Import...</i> button to assist you.</li>
+    <li>Clear the status before sending the file. Select all the issues, click <i>Clear status</i>, and save the file.</li>
+    <li>Send the Replicator file to the client, using the same delivery mechanism as the report.</li>
+</ol>

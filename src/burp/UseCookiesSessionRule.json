@@ -1,0 +1,20 @@
+{
+    "actions":[
+        {
+            "enabled":true,
+            "match_cookies":"all_except",
+            "type":"use_cookies"
+        }
+    ],
+    "description":"Replicator use cookies",
+    "enabled":true,
+    "exclude_from_scope":[],
+    "include_in_scope":[],
+    "named_params":[],
+    "restrict_scope_to_named_params":false,
+    "tools_scope":[
+        "Extender"
+    ],
+    "url_scope":"all",
+    "url_scope_advanced_mode":false
+}

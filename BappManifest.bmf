@@ -1,0 +1,12 @@
+Uuid: 56cf924977874104ac35e52962a9a553
+ExtensionType: 1
+Name: Replicator
+RepoName: replicator
+ScreenVersion: 1.0
+SerialVersion: 1
+MinPlatformVersion: 0
+ProOnly: False
+Author: Paul Johnston, PortSwigger
+ShortDescription: Helps developers replicate findings discovered in pen tests.
+EntryPoint: build/libs/replicator-all.jar
+BuildCommand: gradle fatJar

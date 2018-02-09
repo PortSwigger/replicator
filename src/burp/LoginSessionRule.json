@@ -1,0 +1,32 @@
+{
+  "actions": [
+    {
+      "enabled": true,
+      "invoke_extension_action": false,
+      "macro_serial_number": 0,
+      "match_cookies": "all_except",
+      "match_params": "all_except",
+      "tolerate_url_mismatch": false,
+      "type": "run_macro",
+      "update_with_cookies": true,
+      "update_with_params": true
+    }
+  ],
+  "description": "Replicator login",
+  "enabled": true,
+  "exclude_from_scope": [],
+  "include_in_scope": [
+    {
+      "enabled": true,
+      "file": "/replicator-login",
+      "host": "",
+      "protocol": "any"
+    }
+  ],
+  "named_params": [],
+  "restrict_scope_to_named_params": false,
+  "tools_scope": [
+    "Extender"
+  ],
+  "url_scope": "custom"
+}
