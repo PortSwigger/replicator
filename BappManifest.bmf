@@ -2,7 +2,7 @@ Uuid: 56cf924977874104ac35e52962a9a553
 ExtensionType: 1
 Name: Replicator
 RepoName: replicator
-ScreenVersion: 1.0
+ScreenVersion: 1.0.1
 SerialVersion: 2
 MinPlatformVersion: 0
 ProOnly: False
