@@ -57,7 +57,7 @@ public class ReplicatorPanel extends JPanel implements HierarchyListener
         optionsPanel = new OptionsPanel(this);
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
-        panel.add(optionsPanel, BorderLayout.WEST);
+        panel.add(new JScrollPane(optionsPanel), BorderLayout.WEST);
         topSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, new JScrollPane(issueTable), panel);
         topSplit.setResizeWeight(0.5);
 
