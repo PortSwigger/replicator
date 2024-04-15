@@ -13,7 +13,7 @@
     "named_params":[],
     "restrict_scope_to_named_params":false,
     "tools_scope":[
-        "Extender"
+        "Extensions"
     ],
     "url_scope":"all",
     "url_scope_advanced_mode":false
