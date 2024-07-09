@@ -11,7 +11,7 @@ repositories {
 
 dependencies {
     compileOnly 'net.portswigger.burp.extender:burp-extender-api:1.7.22'
-    implementation 'org.json:json:20171018'
+    implementation 'org.json:json:20231013'
 }
 
 sourceSets {
@@ -25,8 +25,7 @@ sourceSets {
     }
 }
 
-task fatJar(type: Jar) {
-    archiveBaseName = project.name + '-all'
+jar {
+    archiveBaseName = project.name
     from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
-    with jar
 }

@@ -8,6 +8,6 @@ MinPlatformVersion: 0
 ProOnly: False
 Author: Paul Johnston, PortSwigger
 ShortDescription: Helps developers replicate findings discovered in pen tests.
-EntryPoint: build/libs/replicator-all.jar
-BuildCommand: ./gradlew fatJar
+EntryPoint: build/libs/replicator.jar
+BuildCommand: ./gradlew jar
 SupportedProducts: Pro, Community
