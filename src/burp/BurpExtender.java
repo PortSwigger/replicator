@@ -3,17 +3,16 @@ package burp;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import static java.awt.EventQueue.invokeLater;
+
 public class BurpExtender implements IBurpExtender, IExtensionStateListener, ITab, IContextMenuFactory, IHttpListener
 {
     static final String name = "Replicator";
-    private static final String version = "1.0";
-
     static final byte TESTER_VIEW = 1;
     static final byte DEVELOPER_VIEW = 0;
 
@@ -44,16 +43,24 @@ public class BurpExtender implements IBurpExtender, IExtensionStateListener, ITa
             // ignore
         }
 
-        SwingUtilities.invokeLater(new Runnable()
-        {
+        replicatorPanel.addComponentListener(new ComponentAdapter() {
             @Override
-            public void run()
-            {
-                replicatorMenu = new burp.Menu(BurpExtender.this);
-                replicatorMenu.setViewType(viewType);
-                burpMenuBar = getBurpFrame().getJMenuBar();
-                burpMenuBar.add(replicatorMenu);
-                setViewType(viewType);
+            public void componentResized(ComponentEvent e) {
+                if (replicatorPanel.getWidth() > 0)
+                {
+                    replicatorPanel.removeComponentListener(this);
+
+                    invokeLater(() -> {
+                        replicatorMenu = new Menu(BurpExtender.this);
+                        replicatorMenu.setViewType(viewType);
+
+                        burpMenuBar = getBurpFrame().getJMenuBar();
+                        burpMenuBar.add(replicatorMenu);
+                        burpMenuBar.validate();
+
+                        setViewType(viewType);
+                    });
+                }
             }
         });
     }
@@ -67,14 +74,9 @@ public class BurpExtender implements IBurpExtender, IExtensionStateListener, ITa
 
         replicatorPanel.removeChangeListener();
 
-        SwingUtilities.invokeLater(new Runnable()
-        {
-            @Override
-            public void run()
-            {
-                burpMenuBar.remove(replicatorMenu);
-                burpMenuBar.repaint();
-            }
+        invokeLater(() -> {
+            burpMenuBar.remove(replicatorMenu);
+            burpMenuBar.repaint();
         });
     }
 
