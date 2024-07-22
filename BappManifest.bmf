@@ -2,8 +2,8 @@ Uuid: 56cf924977874104ac35e52962a9a553
 ExtensionType: 1
 Name: Replicator
 RepoName: replicator
-ScreenVersion: 1.0.2
-SerialVersion: 6
+ScreenVersion: 1.0.3
+SerialVersion: 7
 MinPlatformVersion: 0
 ProOnly: False
 Author: Paul Johnston, PortSwigger
